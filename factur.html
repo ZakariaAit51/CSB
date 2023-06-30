@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>
+    Cabinet Soukaina Boussaid
+  </title>
+  <link rel="icon" type="image/x-icon" href="images/favicon-32x32.png">
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">
+                    About
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="service.html">
+                    Services
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="factur.html">Facture</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+  <!-- end hero area -->
+
+
+  <div class="container">
+    <div class="row mt-5 mb-5">
+      <div class="col-12">
+        <h2 class="text-center">Générateur de Facture</h2>
+        <form id="facture-form">
+          <div class="form-group">
+            <label for="entreprise">Nom de l'entreprise:</label>
+            <input type="text" class="form-control" id="entreprise" required>
+          </div>
+          <div class="form-group">
+            <label for="adresse">Adresse:</label>
+            <input type="text" class="form-control" id="adresse" required>
+          </div>
+          <div class="row">
+          <div class="form-group col-6">
+            <label for="adresse2">Deuxième Adresse:</label>
+            <input type="text" class="form-control" id="adresse2">
+          </div>
+          <div class="form-group col-6">
+            <label for="adresse3">Troisième Adresse:</label>
+            <input type="text" class="form-control" id="adresse3">
+          </div>
+        </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="item-name">Nom de l'article:</label>
+            <input type="text" class="form-control" id="item-name" required>
+          </div>
+          <div class="row">
+          <div class="form-group col-6">
+            <label for="item-price">Prix de l'article:</label>
+            <input type="number" step="0.01" class="form-control" id="item-price" required>
+          </div>
+          <div class="form-group col-6">
+            <label for="item-quantity">Quantité:</label>
+            <input type="number" class="form-control" id="item-quantity" required>
+          </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="addItem()">Ajouter l'article</button>
+          <button type="button" class="btn btn-success" onclick="generateFacture()">Générer la Facture</button>
+        </form>
+
+        <div id="facture" style="display: none;">
+          <hr>
+          <div class="row">
+            <div class="col-6">
+              <address>
+                <strong>Facturé à:</strong><br>
+                <span id="billed-to"></span><br>
+                <span id="billed-address"></span><br>
+                <span id="billed-address2"></span><br>
+                <span id="billed-address3"></span>
+              </address>
+            </div>
+            <div class="col-6 text-right">
+              <address>
+                <strong>Expédié à:</strong><br>
+                <span id="shipped-to"></span><br>
+                <span id="billed-address"></span><br>
+                <span id="billed-address2"></span><br>
+                <span id="billed-address3"></span>
+              </address>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <address>
+                <strong>Méthode de Paiement:</strong><br>
+                <span id="payment-method"></span><br>
+                <strong>Email:</strong><br>
+                <span id="email"></span>
+              </address>
+            </div>
+            <div class="col-6 text-right">
+              <address>
+                <strong>Date de Facture:</strong><br>
+                <span id="facture-date"></span>
+              </address>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Récapitulatif de la Commande</strong></h3>
+            </div>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th scope="col">Article</th>
+                      <th scope="col" class="text-center">Prix</th>
+                      <th scope="col" class="text-center">Quantité</th>
+                      <th scope="col" class="text-right">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="facture-items"></tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="thick-line"></td>
+                      <td class="thick-line"></td>
+                      <td class="thick-line text-center"><strong>Sous-total</strong></td>
+                      <td class="thick-line text-right"><span id="subtotal"></span></td>
+                    </tr>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center"><strong>Taxes (20%)</strong></td>
+                      <td class="no-line text-right"><span id="taxes"></span></td>
+                    </tr>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center"><strong>Expédition</strong></td>
+                      <td class="no-line text-right"><span id="shipping"></span></td>
+                    </tr>
+                    <tr>
+                      <td class="no-line"></td>
+                      <td class="no-line"></td>
+                      <td class="no-line text-center"><strong>Total</strong></td>
+                      <td class="no-line text-right"><span id="total"></span></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" onclick="resetForm()">Nouvelle Facture</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+  <section class="info_section  layout_padding2-top">
+    <div class="social_container">
+      <div class="social_box">
+        <a href="">
+          <img src="images/fb.png" alt="">
+        </a>
+        <a href="">
+          <img src="images/twitter.png" alt="">
+        </a>
+        <a href="">
+          <img src="images/linkedin.png" alt="">
+        </a>
+        <a href="">
+          <img src="images/youtube.png" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="info_container ">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <h6>
+              ABOUT US
+            </h6>
+            <p>
+              Cabinet Soukaina Boussaid est membre de l’Ordre des Experts comptables au Maroc.
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <h6>
+              Instagram
+            </h6>
+            <p>
+              @CSB
+            </p>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <h6>
+              CONTACT US
+            </h6>
+            <div class="info_link-box">
+              <a href="">
+                <img src="images/location.png" alt="">
+                <span> Espace Rihab Fes, Avenue Allal Ben Abdellah Immb D, N56, 5eme Etage bureau 30 </span>
+              </a>
+              <a href="">
+                <img src="images/call.png" alt="">
+                <span>0666006600</span>
+              </a>
+              <a href="">
+                <img src="images/mail.png" alt="">
+                <span> CabinetSoukainaBoussaid@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer section -->
+    <section class=" footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="https://html.design/">SKB</a>
+        </p>
+      </div>
+    </section>
+  </section>
+
+  <!-- end info section -->
+
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript" src="js/custom.js"></script>
+</body>
+
+</html>
