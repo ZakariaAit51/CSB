@@ -167,6 +167,9 @@
     .slider_section .detail-box h1 {
         font-size: 3.5rem;
     }
+    .info_link-box > a > span {
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 420px) {}
