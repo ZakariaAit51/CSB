@@ -112,7 +112,24 @@
     .logo_container.layout_padding {
 
         padding: 45px 0;
+    }
+    .pnc {
+        padding: 1.5rem;
+    }
+    .pnc_title > h2 {
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    .pnc_img > img {
+        height: 75px;
+    }
+    .pnc > p {
+        font-size: 13px;
+    }
 
+    .layout_padding {
+        padding-top: 75px;
+        padding-bottom: 75px;
     }
 }
 
@@ -134,9 +151,9 @@
         margin: 55px 25px 0;
     }
 
-    .info_section {
-        margin: 0 25px 25px;
-    }
+    /* .info_section {
+    margin: 0 25px 25px;
+    } */
 
     .logo_container.layout_padding {
 

@@ -3,6 +3,7 @@ body {
  sans-serif;
   color: #101010;
   background-color: #ffffff;
+  overflow-x: hidden;
 }
 table{
   margin: 0!important;
@@ -1039,15 +1040,15 @@ padding: 1rem;
   position: relative;
   background-color: #2d2d2d;
   color: #ffffff;
-  margin: 0 45px 45px;
+  /* margin: 0 45px 45px; */
 }
 
 .info_section .social_container {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 25px;
-  margin-bottom: 30px;
+          padding-top: 25px;
+          padding-bottom: 30px;
 }
 
 .info_section .social_container .social_box {
